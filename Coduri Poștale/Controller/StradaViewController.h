@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface StradaViewController : UIViewController
+@interface StradaViewController : UIViewController <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *queryTextField;
 
 @end

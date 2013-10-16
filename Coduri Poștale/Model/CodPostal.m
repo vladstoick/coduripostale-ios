@@ -7,7 +7,6 @@
 //
 
 #import "CodPostal.h"
-#import "AFNetworking.h"
 @implementation CodPostal
 - (id) initWithStreetName:(NSString*) streetName andCod:(NSString*) cod{
     self = [super init];
@@ -18,30 +17,26 @@
     return self;
 }
 + (void)searchAfterStreetName:(NSString *)streetName completion:(void (^)(NSArray *results))completionBlock{
-    NSString *URLString =[@"http://openapi.ro/api/addresses.json?description=" stringByAppendingString:streetName];
+    NSString *URLString = @"http://openapi.ro/api/addresses.json?description=";
+    URLString = [URLString stringByAppendingString:streetName];
     NSLog(@"%@",URLString);
     NSURL *URL = [NSURL URLWithString:URLString];
-    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:URL];
-    [httpClient getPath:@""
-             parameters:nil
-                success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                    NSString *responseStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-                    NSDictionary *json;
-                    json = [NSJSONSerialization JSONObjectWithData:[responseStr dataUsingEncoding:NSUTF8StringEncoding]
-                                                           options:NSJSONReadingMutableContainers
-                                                             error:nil];
-                    
-                } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                    NSLog(@"Recieved error %@",error);
-                }];
+    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
+    
+    [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response,  NSData *data,  NSError *connectionError) {
+                               NSString *responseStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                               NSDictionary *json;
+                               json = [NSJSONSerialization JSONObjectWithData:[responseStr dataUsingEncoding:NSUTF8StringEncoding]
+                                                                      options:NSJSONReadingMutableContainers
+                                                                        error:nil];
+                               NSMutableArray *results = [[NSMutableArray alloc] init];
+                               for( NSDictionary *dictionary in json){
+                                   CodPostal *codPostal = [[CodPostal alloc] initWithStreetName:[dictionary valueForKey:@"description"] andCod:[dictionary valueForKey:@"zip"]];
+                                   [results addObject:codPostal];
+                               }
+                               completionBlock(results);
+                           }];
 
-//    NSURLRequest *request = [NSURLRequest requestWithURL:URL];
-//    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc]
-//                                         initWithRequest:request];
-//    operation.responseSerializer = [AFJSONSerializer serializer];
-//    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        NSLog(@"%@", responseObject);
-//    } failure:nil];
-//    [operation start];
 }
 @end

@@ -26,6 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.queryTextField setDelegate:self];
 	// Do any additional setup after loading the view.
 }
 
@@ -40,5 +41,10 @@
         StradaResultsViewController *destinationViewController = segue.destinationViewController;
         destinationViewController.querry = self.queryTextField.text;
     }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [self performSegueWithIdentifier:@"showResults" sender:self];
+    return NO;
 }
 @end

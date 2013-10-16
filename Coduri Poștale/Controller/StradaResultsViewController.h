@@ -10,4 +10,6 @@
 
 @interface StradaResultsViewController : UITableViewController
 @property (strong, nonatomic) NSString *querry;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+
 @end

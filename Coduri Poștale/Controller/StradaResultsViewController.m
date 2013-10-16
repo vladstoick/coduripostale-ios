@@ -8,6 +8,7 @@
 
 #import "StradaResultsViewController.h"
 #import "CodPostal.h"
+#import "SVProgressHUD.h"
 @interface StradaResultsViewController ()
 @property NSArray *results;
 @end
@@ -26,10 +27,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    [SVProgressHUD show];
     [CodPostal searchAfterStreetName:self.querry completion:^(NSArray *results) {
         self.results=results;
         [self.tableView reloadData];
+        [SVProgressHUD dismiss];
     }];
 
     // Uncomment the following line to preserve selection between presentations.
@@ -50,7 +52,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -63,7 +65,8 @@
 {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
+    cell.textLabel.text = ((CodPostal*) self.results[indexPath.row]).streetName;
+    cell.detailTextLabel.text = ((CodPostal*) self.results[indexPath.row]).cod;
     // Configure the cell...
     
     return cell;
