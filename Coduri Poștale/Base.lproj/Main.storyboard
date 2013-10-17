@@ -100,10 +100,10 @@
             </objects>
             <point key="canvasLocation" x="1628" y="94"/>
         </scene>
-        <!--Second View Controller - Second-->
+        <!--Map View Controller - Second-->
         <scene sceneID="ot8-2e-RuS">
             <objects>
-                <viewController title="Second" id="QUy-BD-bpt" customClass="SecondViewController" sceneMemberID="viewController">
+                <viewController title="Second" id="QUy-BD-bpt" customClass="MapViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kyr-wz-iJo"/>
                         <viewControllerLayoutGuide type="bottom" id="W1M-d1-koM"/>
@@ -113,14 +113,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gKJ-Hi-DsO">
-                                <rect key="frame" x="0.0" y="64" width="320" height="458"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="QUy-BD-bpt" id="WtO-zu-nsL"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="G2q-jU-AVg"/>
                     <connections>
+                        <outlet property="mapView" destination="gKJ-Hi-DsO" id="8BX-h6-TbM"/>
                         <segue destination="krT-1e-uN6" kind="push" identifier="showResultsFromMap" id="7tu-n6-bOZ"/>
                     </connections>
                 </viewController>
@@ -183,6 +187,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="AQa-Ly-Gdo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.4784313738" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -205,6 +210,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="eyb-dQ-O1s"/>
+        <segue reference="7tu-n6-bOZ"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -17,7 +17,18 @@
     return self;
 }
 + (void)searchAfterStreetName:(NSString *)streetName completion:(void (^)(NSArray *results))completionBlock{
+    streetName = [streetName stringByReplacingOccurrencesOfString:@"ș" withString:@"s"];
+    streetName = [streetName stringByReplacingOccurrencesOfString:@"Ș" withString:@"s"];
+    streetName = [streetName stringByReplacingOccurrencesOfString:@"Ț" withString:@"t"];
+    streetName = [streetName stringByReplacingOccurrencesOfString:@"ț" withString:@"t"];
+    streetName = [streetName stringByReplacingOccurrencesOfString:@"Ă" withString:@"a"];
+    streetName = [streetName stringByReplacingOccurrencesOfString:@"ă" withString:@"a"];
+    streetName = [streetName stringByReplacingOccurrencesOfString:@"â" withString:@"a"];
+    streetName = [streetName stringByReplacingOccurrencesOfString:@"Â" withString:@"a"];
+    streetName = [streetName stringByReplacingOccurrencesOfString:@"î" withString:@"i"];
+    streetName = [streetName stringByReplacingOccurrencesOfString:@"Î" withString:@"i"];
     NSString *URLString = @"http://openapi.ro/api/addresses.json?description=";
+    streetName = [streetName stringByReplacingOccurrencesOfString:@" " withString:@"%20"];
     URLString = [URLString stringByAppendingString:streetName];
     NSLog(@"%@",URLString);
     NSURL *URL = [NSURL URLWithString:URLString];

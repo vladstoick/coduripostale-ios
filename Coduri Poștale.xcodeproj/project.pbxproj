@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		724CDE12181001F300D939AE /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 724CDE11181001F300D939AE /* MapViewController.m */; };
+		7253A82B180F113A007B5496 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7253A82A180F113A007B5496 /* MapKit.framework */; };
 		726F62AB18052526008760D5 /* StradaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 726F62AA18052526008760D5 /* StradaViewController.m */; };
 		726F62AF1805256B008760D5 /* StradaResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 726F62AE1805256B008760D5 /* StradaResultsViewController.m */; };
 		726F62B318052617008760D5 /* CodPostal.m in Sources */ = {isa = PBXBuildFile; fileRef = 726F62B218052617008760D5 /* CodPostal.m */; };
@@ -39,6 +41,9 @@
 /* Begin PBXFileReference section */
 		21A0AE00E90B428088687CFE /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		5142701FCF204074951F1097 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		724CDE10181001F300D939AE /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = Controller/MapViewController.h; sourceTree = "<group>"; };
+		724CDE11181001F300D939AE /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = Controller/MapViewController.m; sourceTree = "<group>"; };
+		7253A82A180F113A007B5496 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		726F62A918052526008760D5 /* StradaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StradaViewController.h; path = Controller/StradaViewController.h; sourceTree = "<group>"; };
 		726F62AA18052526008760D5 /* StradaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StradaViewController.m; path = Controller/StradaViewController.m; sourceTree = "<group>"; };
 		726F62AD1805256B008760D5 /* StradaResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StradaResultsViewController.h; path = Controller/StradaResultsViewController.h; sourceTree = "<group>"; };
@@ -69,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7253A82B180F113A007B5496 /* MapKit.framework in Frameworks */,
 				7272A5391804581900795208 /* CoreGraphics.framework in Frameworks */,
 				7272A53B1804581900795208 /* UIKit.framework in Frameworks */,
 				7272A5371804581900795208 /* Foundation.framework in Frameworks */,
@@ -96,6 +102,8 @@
 				726F62AA18052526008760D5 /* StradaViewController.m */,
 				726F62AD1805256B008760D5 /* StradaResultsViewController.h */,
 				726F62AE1805256B008760D5 /* StradaResultsViewController.m */,
+				724CDE10181001F300D939AE /* MapViewController.h */,
+				724CDE11181001F300D939AE /* MapViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -132,6 +140,7 @@
 		7272A5351804581900795208 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7253A82A180F113A007B5496 /* MapKit.framework */,
 				7272A5361804581900795208 /* Foundation.framework */,
 				7272A5381804581900795208 /* CoreGraphics.framework */,
 				7272A53A1804581900795208 /* UIKit.framework */,
@@ -319,6 +328,7 @@
 				726F62B318052617008760D5 /* CodPostal.m in Sources */,
 				7272A5471804581900795208 /* AppDelegate.m in Sources */,
 				726F62AF1805256B008760D5 /* StradaResultsViewController.m in Sources */,
+				724CDE12181001F300D939AE /* MapViewController.m in Sources */,
 				726F62AB18052526008760D5 /* StradaViewController.m in Sources */,
 				7272A5431804581900795208 /* main.m in Sources */,
 			);
