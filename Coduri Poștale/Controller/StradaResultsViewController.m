@@ -31,7 +31,11 @@
     [CodPostal searchAfterStreetName:self.querry completion:^(NSArray *results) {
         self.results=results;
         [self.tableView reloadData];
-        [SVProgressHUD dismiss];
+        if(self.results.count >0){
+            [SVProgressHUD dismiss];
+        } else {
+            [SVProgressHUD showErrorWithStatus:@"Niciun rezultat"];
+        }
     }];
 
     // Uncomment the following line to preserve selection between presentations.
@@ -72,7 +76,9 @@
     return cell;
 }
 
+
 /*
+ 
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {

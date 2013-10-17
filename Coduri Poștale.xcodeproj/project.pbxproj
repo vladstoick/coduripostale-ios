@@ -242,6 +242,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Vlad Stoica";
 				TargetAttributes = {
+					7272A5321804581900795208 = {
+						DevelopmentTeam = MQ8JA8H9EG;
+					};
 					7272A5561804581900795208 = {
 						TestTargetID = 7272A5321804581900795208;
 					};
@@ -458,6 +461,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Coduri Poștale/Coduri Poștale-Prefix.pch";
 				INFOPLIST_FILE = "Coduri Poștale/Coduri Poștale-Info.plist";
@@ -472,6 +476,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Coduri Poștale/Coduri Poștale-Prefix.pch";
 				INFOPLIST_FILE = "Coduri Poștale/Coduri Poștale-Info.plist";
