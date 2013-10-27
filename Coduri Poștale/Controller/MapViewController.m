@@ -48,10 +48,11 @@
 
 -(void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation{
     if(self.hasUpdatedCurrentLocation == NO ){
+        mapView.showsUserLocation = YES;
         MKCoordinateRegion mapRegion;
         mapRegion.center = mapView.userLocation.coordinate;
-        mapRegion.span.latitudeDelta = 0.2;
-        mapRegion.span.longitudeDelta = 0.2;
+        mapRegion.span.latitudeDelta = 0.05;
+        mapRegion.span.longitudeDelta = 0.05;
         [mapView setRegion:mapRegion animated: YES];
         self.hasUpdatedCurrentLocation = YES;
     }
@@ -89,8 +90,7 @@
     MKPointAnnotation *annot = [[MKPointAnnotation alloc] init];
     annot.coordinate = touchMapCoordinate;
     [self.mapView addAnnotation:annot];
-        annot.title = @"LALALA";
-                    
+        
     CLLocation *pinLocation = [[CLLocation alloc] initWithLatitude:touchMapCoordinate.latitude longitude:touchMapCoordinate.longitude];
     [self.geocoder reverseGeocodeLocation:pinLocation completionHandler:^(NSArray *placemarks, NSError *error) {
         CLPlacemark *placemark = [placemarks objectAtIndex:0];

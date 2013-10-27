@@ -10,7 +10,8 @@
 #import "CodPostal.h"
 #import "SVProgressHUD.h"
 @interface StradaResultsViewController ()
-@property NSArray *results;
+@property NSDictionary *results;
+@property NSArray *names;
 @end
 
 @implementation StradaResultsViewController
@@ -28,8 +29,13 @@
 {
     [super viewDidLoad];
     [SVProgressHUD show];
-    [CodPostal searchAfterStreetName:self.querry completion:^(NSArray *results) {
+    [CodPostal searchAfterStreetName:self.querry completion:^(NSDictionary *results) {
         self.results=results;
+        NSMutableArray *names = [[NSMutableArray alloc] init];
+        for(NSString *cityName in results){
+            [names addObject:cityName];
+        }
+        self.names = names;
         [self.tableView reloadData];
         if(self.results.count >0){
             [SVProgressHUD dismiss];
@@ -56,27 +62,33 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return self.names.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return self.results.count;
+    NSArray *currentArrayForCod = [self.results objectForKey:self.names[section]];
+    return currentArrayForCod.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
+    NSLog(@"%ld",(long)indexPath.section);
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    cell.textLabel.text = ((CodPostal*) self.results[indexPath.row]).streetName;
-    cell.detailTextLabel.text = ((CodPostal*) self.results[indexPath.row]).cod;
+    NSArray *currentArrayForCod = [self.results objectForKey:self.names[indexPath.section]];
+    CodPostal *codpostal = [currentArrayForCod objectAtIndex:indexPath.row];
+    cell.textLabel.text = codpostal.streetName;
+    cell.detailTextLabel.text = codpostal.cod;
     // Configure the cell...
     
     return cell;
 }
 
-
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    return self.names[section];
+}
 /*
  
 // Override to support conditional editing of the table view.

@@ -8,15 +8,16 @@
 
 #import "CodPostal.h"
 @implementation CodPostal
-- (id) initWithStreetName:(NSString*) streetName andCod:(NSString*) cod{
+- (id) initWithStreetName:(NSString*) streetName andCod:(NSString*) cod andCity:(NSString*) city{
     self = [super init];
     if(self){
         self.streetName = streetName;
         self.cod = cod;
+        self.city = city;
     }
     return self;
 }
-+ (void)searchAfterStreetName:(NSString *)streetName completion:(void (^)(NSArray *results))completionBlock{
++ (void)searchAfterStreetName:(NSString *)streetName completion:(void (^)(NSDictionary *results))completionBlock{
     streetName = [streetName stringByReplacingOccurrencesOfString:@"ș" withString:@"s"];
     streetName = [streetName stringByReplacingOccurrencesOfString:@"Ș" withString:@"s"];
     streetName = [streetName stringByReplacingOccurrencesOfString:@"Ț" withString:@"t"];
@@ -41,10 +42,19 @@
                                json = [NSJSONSerialization JSONObjectWithData:[responseStr dataUsingEncoding:NSUTF8StringEncoding]
                                                                       options:NSJSONReadingMutableContainers
                                                                         error:nil];
-                               NSMutableArray *results = [[NSMutableArray alloc] init];
+                               NSMutableDictionary *results = [[NSMutableDictionary alloc] init];
                                for( NSDictionary *dictionary in json){
-                                   CodPostal *codPostal = [[CodPostal alloc] initWithStreetName:[dictionary valueForKey:@"description"] andCod:[dictionary valueForKey:@"zip"]];
-                                   [results addObject:codPostal];
+                                   CodPostal *codPostal = [[CodPostal alloc] initWithStreetName:[dictionary valueForKey:@"description"]
+                                                                                         andCod:[dictionary valueForKey:@"zip"]
+                                                                                        andCity:[dictionary valueForKey:@"location"]];
+                                   if([results valueForKey:codPostal.city]){
+                                       NSMutableArray *currentCodesForCity = [results valueForKey:codPostal.city];
+                                       [currentCodesForCity addObject:codPostal];
+                                   } else {
+                                       NSMutableArray *currentCodesForCity = [[NSMutableArray alloc] initWithObjects:codPostal, nil];
+                                       [results setValue:currentCodesForCity forKey:codPostal.city];
+                                   }
+                                
                                }
                                completionBlock(results);
                            }];
