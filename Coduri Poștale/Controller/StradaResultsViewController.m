@@ -35,7 +35,11 @@
         for(NSString *cityName in results){
             [names addObject:cityName];
         }
-        self.names = names;
+        self.names =[names sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+            NSString *string1 = a;
+            NSString *string2 = b;
+            return [string1 compare:string2];
+        }];
         [self.tableView reloadData];
         if(self.results.count >0){
             [SVProgressHUD dismiss];
