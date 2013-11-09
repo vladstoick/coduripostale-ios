@@ -12,6 +12,9 @@
 @property (strong, nonatomic) NSString* city;
 @property (strong, nonatomic) NSString* streetName;
 @property (strong, nonatomic) NSString* cod;
+@property (strong, nonatomic) NSString* sector;
+@property (strong, nonatomic) NSString* judet;
+@property (strong, nonatomic) NSString* tipulStrazii;
 + (void) searchAfterStreetName:(NSString*) streetName
                     completion:(void (^)(NSDictionary *results)) completionBlock;
 @end

@@ -25,6 +25,7 @@
 		7272A55B1804581900795208 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7272A53A1804581900795208 /* UIKit.framework */; };
 		7272A5631804581900795208 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7272A5611804581900795208 /* InfoPlist.strings */; };
 		7272A5651804581900795208 /* Coduri_Pos_taleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7272A5641804581900795208 /* Coduri_Pos_taleTests.m */; };
+		72830CBE182E3D0B00E7EA59 /* ResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72830CBD182E3D0B00E7EA59 /* ResultViewController.m */; };
 		7C49B1B4D88E41548A44EB50 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5142701FCF204074951F1097 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,8 @@
 		7272A5601804581900795208 /* Coduri PoștaleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Coduri PoștaleTests-Info.plist"; sourceTree = "<group>"; };
 		7272A5621804581900795208 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7272A5641804581900795208 /* Coduri_Pos_taleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Coduri_Pos_taleTests.m; sourceTree = "<group>"; };
+		72830CBC182E3D0B00E7EA59 /* ResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultViewController.h; sourceTree = "<group>"; };
+		72830CBD182E3D0B00E7EA59 /* ResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +107,8 @@
 				726F62AE1805256B008760D5 /* StradaResultsViewController.m */,
 				724CDE10181001F300D939AE /* MapViewController.h */,
 				724CDE11181001F300D939AE /* MapViewController.m */,
+				72830CBC182E3D0B00E7EA59 /* ResultViewController.h */,
+				72830CBD182E3D0B00E7EA59 /* ResultViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -329,6 +334,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				726F62B318052617008760D5 /* CodPostal.m in Sources */,
+				72830CBE182E3D0B00E7EA59 /* ResultViewController.m in Sources */,
 				7272A5471804581900795208 /* AppDelegate.m in Sources */,
 				726F62AF1805256B008760D5 /* StradaResultsViewController.m in Sources */,
 				724CDE12181001F300D939AE /* MapViewController.m in Sources */,

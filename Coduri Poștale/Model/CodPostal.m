@@ -8,12 +8,20 @@
 
 #import "CodPostal.h"
 @implementation CodPostal
-- (id) initWithStreetName:(NSString*) streetName andCod:(NSString*) cod andCity:(NSString*) city{
+- (id) initWithStreetName:(NSString*) streetName
+                   andCod:(NSString*) cod
+                  andCity:(NSString*) city
+                 andJudet:(NSString*) judet
+                andSector:(NSString*) sector
+                  andType:(NSString*) type{
     self = [super init];
     if(self){
+        self.judet = judet;
+        self.sector = sector;
         self.streetName = streetName;
         self.cod = cod;
         self.city = city;
+        self.tipulStrazii = type;
     }
     return self;
 }
@@ -46,7 +54,10 @@
                                for( NSDictionary *dictionary in json){
                                    CodPostal *codPostal = [[CodPostal alloc] initWithStreetName:[dictionary valueForKey:@"description"]
                                                                                          andCod:[dictionary valueForKey:@"zip"]
-                                                                                        andCity:[dictionary valueForKey:@"location"]];
+                                                                                        andCity:[dictionary valueForKey:@"location"]
+                                                                                       andJudet:[dictionary valueForKey:@"county"]
+                                                                                      andSector:[dictionary valueForKey:@"sector"]
+                                                                                        andType:[dictionary valueForKey:@"street_type"]];
                                    if([results valueForKey:codPostal.city]){
                                        NSMutableArray *currentCodesForCity = [results valueForKey:codPostal.city];
                                        [currentCodesForCity addObject:codPostal];
